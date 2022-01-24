@@ -1,4 +1,5 @@
 import { StrictMode } from "react";
+import { BrowserRouter } from "react-router-dom";
 import { MoralisProvider } from "react-moralis";
 import ReactDOM from "react-dom";
 import App from "./App";
@@ -7,12 +8,14 @@ import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <StrictMode>
-    <MoralisProvider
-      appId={process.env.REACT_APP_MORALIS_APP_ID ?? ""}
-      serverUrl={process.env.REACT_APP_MORALIS_SERVER_URL ?? ""}
-    >
-      <App />
-    </MoralisProvider>
+    <BrowserRouter>
+      <MoralisProvider
+        appId={process.env.REACT_APP_MORALIS_APP_ID ?? ""}
+        serverUrl={process.env.REACT_APP_MORALIS_SERVER_URL ?? ""}
+      >
+        <App />
+      </MoralisProvider>
+    </BrowserRouter>
   </StrictMode>,
   document.getElementById("root")
 );
