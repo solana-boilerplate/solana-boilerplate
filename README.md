@@ -1,4 +1,4 @@
-# solana-boilerplate
+# Solana Boilerplate
 Lightweight boilerplate for Solana dapps. Allows quick building and prototyping.
 
 # ⭐️ `Star us`
@@ -9,3 +9,22 @@ If you need help with setting up the boilerplate or have other questions - don't
 
 # 🚀 Quick Start
 
+📄 Clone or fork `ethereum-boilerplate`:
+```sh
+git clone https://github.com/solana-boilerplate/solana-boilerplate.git
+```
+💿 Install all dependencies:
+```sh
+cd solana-boilerplate
+yarn install 
+```
+✏ Rename `.env.example` to `.env` in the main folder and provide your `appId` and `serverUrl` from Moralis ([How to start Moralis Server](https://docs.moralis.io/moralis-server/getting-started/create-a-moralis-server)) 
+Example:
+```jsx
+REACT_APP_MORALIS_APPLICATION_ID = xxxxxxxxxxxx
+REACT_APP_MORALIS_SERVER_URL = https://xxxxxx.grandmoralis.com:2053/server
+```
+🚴‍♂️ Run your App:
+```sh
+yarn start
+```
