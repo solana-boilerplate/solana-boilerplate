@@ -1,3 +1,9 @@
+<p align="center">
+  <img src="https://moralis.io/wp-content/uploads/2021/04/Moralis-Logo.svg" style="height: 100px;" />
+  <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/plus-512.png" style="height: 100px;" />
+  <img src="https://solana.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FsolanaLogoMark.17260911.svg&w=128&q=75" style="height: 100px;"/>
+</p>
+
 # Solana Boilerplate
 Lightweight boilerplate for Solana dapps. Allows quick building and prototyping.
 
