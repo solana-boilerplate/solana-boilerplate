@@ -25,3 +25,4 @@ yarn-error.log*
 yarn.lock
 yarn-erro.log*
 package-lock.json
+.env
