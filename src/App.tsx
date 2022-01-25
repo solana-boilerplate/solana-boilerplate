@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useMoralis } from "react-moralis";
 import { Routes, Route, NavLink } from "react-router-dom";
-import { Logo, Button, Blockie, LinkTo } from "web3uikit";
+import { Logo, Button, LinkTo, getEllipsisTxt } from "web3uikit";
 import { Layout, Typography, Menu } from "antd";
 import Quickstart from "./pages/Quickstart";
 import Tokens from "./pages/Tokens";
@@ -47,17 +47,17 @@ const App: FC = () => {
 				<div style={{ paddingTop: "1rem" }}>
 					<Logo color="white" theme="icon" />
 				</div>
-				{isAuthenticated ? (
-					<Blockie seed={user?.get("solAddress")} />
-				) : (
-					<Button
-						id="test-button"
-						onClick={onConnectWallet}
-						text="Connect Wallet"
-						theme="secondary"
-						type="button"
-					/>
-				)}
+				<Button
+					id="test-button"
+					onClick={onConnectWallet}
+					text={
+						isAuthenticated && user?.get("solAddress")
+							? getEllipsisTxt(user?.get("solAddress"))
+							: "Connect Wallet"
+					}
+					theme="secondary"
+					type="button"
+				/>
 			</Header>
 			<div
 				style={{
