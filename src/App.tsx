@@ -1,16 +1,16 @@
 import { FC } from "react";
 import { useMoralis } from "react-moralis";
-import { Routes, Route, Link } from "react-router-dom";
-import { Logo, Button, TabList, Blockie, LinkTo } from "web3uikit";
-import { Layout, Typography } from "antd";
+import { Routes, Route, NavLink } from "react-router-dom";
+import { Logo, Button, Blockie, LinkTo } from "web3uikit";
+import { Layout, Typography, Menu } from "antd";
 import Quickstart from "./pages/Quickstart";
 import Tokens from "./pages/Tokens";
 import NFTs from "./pages/NFTs";
+import Portfolio from "./pages/Portfolio";
 import "antd/dist/antd.css";
 
 const { Header, Content, Footer } = Layout;
 const { Text } = Typography;
-const { Tab } = TabList;
 
 const App: FC = () => {
   const { authenticate, isAuthenticated, user } = useMoralis();
@@ -28,12 +28,14 @@ const App: FC = () => {
   };
 
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout style={{ minHeight: "130vh" }}>
       <Header
         style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          paddingLeft: "1.5rem",
+          paddingRight: "1.5rem",
         }}
       >
         <div style={{ paddingTop: "1rem" }}>
@@ -51,17 +53,35 @@ const App: FC = () => {
           />
         )}
       </Header>
+      <div
+        style={{
+          backgroundColor: "white",
+          position: "sticky",
+          top: 0,
+        }}
+      >
+        <Menu selectedKeys={["quickstart"]} mode="horizontal">
+          <Menu.Item key="quickstart">
+            <NavLink to="/">Quickstart</NavLink>
+          </Menu.Item>
+          <Menu.Item key="tokens">
+            <NavLink to="/tokens">Tokens</NavLink>
+          </Menu.Item>
+          <Menu.Item key="nfts">
+            <NavLink to="/nfts">NFTs</NavLink>
+          </Menu.Item>
+          <Menu.Item key="portfolio">
+            <NavLink to="/portfolio">Portfolio</NavLink>
+          </Menu.Item>
+        </Menu>
+      </div>
       <Content>
-        <TabList defaultActiveKey={1} tabStyle="bar">
-          <Tab tabKey={1} tabName={<Link to="/">Quickstart</Link>} />
-          <Tab tabKey={2} tabName={<Link to="/tokens">Tokens</Link>} />
-          <Tab tabKey={3} tabName={<Link to="/nfts">NFTs</Link>} />
-        </TabList>
-        <div>
+        <div style={{ padding: "1rem" }}>
           <Routes>
             <Route path="/" element={<Quickstart />} />
             <Route path="/tokens" element={<Tokens />} />
             <Route path="/nfts" element={<NFTs />} />
+            <Route path="/portfolio" element={<Portfolio />} />
           </Routes>
         </div>
       </Content>
