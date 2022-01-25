@@ -4,28 +4,26 @@ import {
   useMoralisSolanaApi,
   useMoralisSolanaCall,
 } from "react-moralis";
+import { SolanaHooksOptions } from "../types/SolanaHooksOptions";
 
-const useSolanaNativeBalance = () => {
+const useSolanaPortfolio = (options: SolanaHooksOptions) => {
   const { isInitialized, isAuthenticated } = useMoralis();
   const { account } = useMoralisSolanaApi();
   const {
-    fetch: getSolanaNativeBalance,
+    fetch: getSolanaPortfolio,
     data,
     error,
     isLoading,
-  } = useMoralisSolanaCall(account?.balance, {
-    network: "testnet",
-    address: "HsXZnF7Te7dZ5ijvGcDj3NWtxRBBaAuYQgh1oZLwAba2",
-  });
+  } = useMoralisSolanaCall(account?.getPortfolio, options);
 
   useEffect(() => {
     if (isInitialized && isAuthenticated) {
-      getSolanaNativeBalance();
+      getSolanaPortfolio();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInitialized, isAuthenticated]);
 
-  return { getSolanaNativeBalance, data, error, isLoading };
+  return { getSolanaPortfolio, data, error, isLoading };
 };
 
-export default useSolanaNativeBalance;
+export default useSolanaPortfolio;

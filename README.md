@@ -15,7 +15,7 @@ If you need help with setting up the boilerplate or have other questions - don't
 
 # 🚀 Quick Start
 
-📄 Clone or fork `ethereum-boilerplate`:
+📄 Clone or fork `solana-boilerplate`:
 ```sh
 git clone https://github.com/solana-boilerplate/solana-boilerplate.git
 ```
