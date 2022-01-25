@@ -4,11 +4,11 @@
  * @param {number} n number of chars to keep at front/end
  * @returns {string}
  */
-const getEllipsisTxt = (str: string, n: number = 6) => {
-  if (str) {
-    return `${str.slice(0, n)}...${str.slice(str.length - n)}`;
-  }
-  return "";
+const getEllipsisTxt = (str: string, n = 6): string => {
+	if (str) {
+		return `${str.slice(0, n)}...${str.slice(str.length - n)}`;
+	}
+	return "";
 };
 
 export default getEllipsisTxt;

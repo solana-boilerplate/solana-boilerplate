@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 const Quickstart: FC = () => {
-  return <>Quickstart</>;
+	return <>Quickstart</>;
 };
 
 export default Quickstart;

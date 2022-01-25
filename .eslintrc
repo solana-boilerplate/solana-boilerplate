@@ -1,0 +1,61 @@
+{
+	"env": {
+		"browser": true,
+		"node": true,
+		"es2021": true,
+		"jest/globals": true
+	},
+	"extends": [
+		"airbnb",
+		"airbnb-typescript",
+		"airbnb/hooks",
+		"plugin:jest/recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:prettier/recommended"
+	],
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": 12,
+		"sourceType": "module",
+		"project": "./tsconfig.json"
+	},
+	"plugins": ["@typescript-eslint"],
+	"rules": {
+		"react/jsx-filename-extension": [
+			1,
+			{ "extensions": [".js", ".jsx", ".ts", "tsx"] }
+		],
+		"react/jsx-props-no-spreading": "off",
+		"prettier/prettier": "warn",
+		"no-unused-vars": [
+			"warn",
+			{ "vars": "all", "args": "after-used", "ignoreRestSiblings": false }
+		],
+		"@typescript-eslint/ban-ts-comment": "off",
+		"@typescript-eslint/no-explicit-any": "off",
+		"@typescript-eslint/no-empty-function": "off",
+		"import/extensions": "off",
+		"@typescript-eslint/no-use-before-define": "off",
+		"no-param-reassign": "off",
+		// We do not use prop-types in TS
+		"react/require-default-props": "off",
+		"no-underscore-dangle": "off",
+		"react/prop-types": "off",
+		"react/jsx-uses-react": "off",
+		"react/react-in-jsx-scope": "off",
+		"react/function-component-definition": "off"
+	},
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"extensions": [".js", ".jsx", ".ts", ".tsx"]
+			}
+		},
+		"react": {
+			"version": "detect"
+		}
+	}
+}

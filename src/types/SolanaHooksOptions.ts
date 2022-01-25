@@ -1,4 +1,4 @@
 export interface SolanaHooksOptions {
-  network: "mainnet" | "testnet";
-  address: "string";
+	network: "mainnet" | "testnet";
+	address: "string";
 }

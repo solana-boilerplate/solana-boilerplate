@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 const Portfolio: FC = () => {
-  return <>Portfolio</>;
+	return <>Portfolio</>;
 };
 
 export default Portfolio;

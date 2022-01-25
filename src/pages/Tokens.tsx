@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 const Tokens: FC = () => {
-  return <>Tokens</>;
+	return <>Tokens</>;
 };
 
 export default Tokens;

@@ -1,31 +1,38 @@
 import { useEffect } from "react";
 import {
-  useMoralis,
-  useMoralisSolanaApi,
-  useMoralisSolanaCall,
+	useMoralis,
+	useMoralisSolanaApi,
+	useMoralisSolanaCall,
 } from "react-moralis";
 
-const useSolanaNativeBalance = () => {
-  const { isInitialized, isAuthenticated } = useMoralis();
-  const { account } = useMoralisSolanaApi();
-  const {
-    fetch: getSolanaNativeBalance,
-    data,
-    error,
-    isLoading,
-  } = useMoralisSolanaCall(account?.balance, {
-    network: "testnet",
-    address: "HsXZnF7Te7dZ5ijvGcDj3NWtxRBBaAuYQgh1oZLwAba2",
-  });
+interface UseSolanaNativeBalanceReturn {
+	getSolanaNativeBalance: any;
+	data: any;
+	error: Error | null;
+	isLoading: boolean;
+}
 
-  useEffect(() => {
-    if (isInitialized && isAuthenticated) {
-      getSolanaNativeBalance();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isInitialized, isAuthenticated]);
+const useSolanaNativeBalance = (): UseSolanaNativeBalanceReturn => {
+	const { isInitialized, isAuthenticated } = useMoralis();
+	const { account } = useMoralisSolanaApi();
+	const {
+		fetch: getSolanaNativeBalance,
+		data,
+		error,
+		isLoading,
+	} = useMoralisSolanaCall(account?.balance, {
+		network: "testnet",
+		address: "HsXZnF7Te7dZ5ijvGcDj3NWtxRBBaAuYQgh1oZLwAba2",
+	});
 
-  return { getSolanaNativeBalance, data, error, isLoading };
+	useEffect(() => {
+		if (isInitialized && isAuthenticated) {
+			getSolanaNativeBalance();
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isInitialized, isAuthenticated]);
+
+	return { getSolanaNativeBalance, data, error, isLoading };
 };
 
 export default useSolanaNativeBalance;
