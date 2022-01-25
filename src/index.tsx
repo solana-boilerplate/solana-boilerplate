@@ -5,6 +5,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
+import { SolanaContextProvider } from "./context/SolanaContext";
 
 const MoralisAppId = process.env.REACT_APP_MORALIS_APP_ID;
 const MoralisServerUrl = process.env.REACT_APP_MORALIS_SERVER_URL;
@@ -17,7 +18,9 @@ ReactDOM.render(
 				appId={process.env.REACT_APP_MORALIS_APP_ID ?? ""}
 				serverUrl={process.env.REACT_APP_MORALIS_SERVER_URL ?? ""}
 			>
-				<App isServerInfo={isServerInfo} />
+				<SolanaContextProvider>
+					<App isServerInfo={isServerInfo} />
+				</SolanaContextProvider>
 			</MoralisProvider>
 		</BrowserRouter>
 	</StrictMode>,
