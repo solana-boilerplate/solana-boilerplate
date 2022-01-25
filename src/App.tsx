@@ -28,7 +28,7 @@ const App: FC = () => {
   };
 
   return (
-    <Layout style={{ minHeight: "130vh" }}>
+    <Layout style={{ minHeight: "100vh" }}>
       <Header
         style={{
           display: "flex",
