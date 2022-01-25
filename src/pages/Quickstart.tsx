@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, Illustration } from "web3uikit";
-import { Timeline, Typography } from "antd";
+import { Card as AntdCard, Timeline, Typography } from "antd";
 
-const { Text } = Typography;
+const { Text, Title } = Typography;
 
 interface QuickstartProps {
 	isServerInfo: boolean;
@@ -12,30 +12,30 @@ interface QuickstartProps {
 const Quickstart: FC<QuickstartProps> = (props) => {
 	const { isServerInfo } = props;
 	const navigate = useNavigate();
+
 	return (
 		<div style={{ display: "flex", gap: "2rem" }}>
 			<div style={{ display: "flex", flex: 3 }}>
-				<Card tooltipText="You must complete this before using the boilerplate">
+				<AntdCard style={{ width: "100%", borderRadius: "1.5rem" }}>
+					<Title style={{ marginBottom: "2rem" }}>To-Do List</Title>
 					<Timeline mode="left">
 						<Timeline.Item dot="📄">
 							<Text delete>
 								Clone or fork{" "}
 								<a
-									href="https://github.com/ethereum-boilerplate/ethereum-boilerplate#-quick-start"
+									href="https://github.com/solana-boilerplate/solana-boilerplate#-quick-start"
 									target="_blank"
 									rel="noopener noreferrer"
 								>
-									ethereum-boilerplate
+									solana-boilerplate
 								</a>{" "}
 							</Text>
 						</Timeline.Item>
-
 						<Timeline.Item dot="💿">
 							<Text delete>
 								Install all dependencies: <Text code>npm install</Text>
 							</Text>
 						</Timeline.Item>
-
 						<Timeline.Item dot="🧰">
 							<Text delete={isServerInfo}>
 								Sign up for a free account on{" "}
@@ -48,7 +48,6 @@ const Quickstart: FC<QuickstartProps> = (props) => {
 								</a>
 							</Text>
 						</Timeline.Item>
-
 						<Timeline.Item dot="💾">
 							<Text delete={isServerInfo}>
 								Create a Moralis Server (
@@ -62,7 +61,6 @@ const Quickstart: FC<QuickstartProps> = (props) => {
 								)
 							</Text>
 						</Timeline.Item>
-
 						<Timeline.Item dot="🔏">
 							<Text delete={isServerInfo}>
 								Rename <Text code>.env.example</Text> to <Text code>.env</Text> and and
@@ -86,7 +84,6 @@ const Quickstart: FC<QuickstartProps> = (props) => {
 								https://xxxxxx.grandmoralis.com:2053/server
 							</Text>
 						</Timeline.Item>
-
 						<Timeline.Item dot="🔁">
 							<Text delete={isServerInfo}>
 								Stop the app and start it again <Text code>npm run start</Text>
@@ -98,7 +95,7 @@ const Quickstart: FC<QuickstartProps> = (props) => {
 						</Timeline.Item>
 					</Timeline>
 					<div />
-				</Card>
+				</AntdCard>
 			</div>
 			<div
 				style={{
