@@ -43,7 +43,7 @@ yarn start
 - [🏗 Solana Components](#-solana-components)
 - [🧰 Solana Hooks](#-solana-hooks)
   - [`useSolana`](#usesolana)
-  - [`useSolanaNativeBalance`](#usesolananativetokenbalance)
+  - [`useSolanaNativeTokenBalance`](#usesolananativetokenbalance)
   - [`useSPLTokenBalance`](#usespltokenbalance)
   - [`useSPLNFTBalance`](#usesplnftbalance)
   - [`useSolanaPortfolio`](#usesolanaportfolio)
