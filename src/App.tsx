@@ -1,12 +1,13 @@
 import { FC } from "react";
-import { Routes, Route, NavLink } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { LinkTo } from "web3uikit";
-import { Layout, Typography, Menu } from "antd";
+import { Layout, Typography } from "antd";
 import Quickstart from "./pages/Quickstart";
 import Tokens from "./pages/Tokens";
 import NFTs from "./pages/NFTs";
 import Portfolio from "./pages/Portfolio";
 import AppBar from "./components/AppBar";
+import MenuBar from "./components/MenuBar";
 import "antd/dist/antd.css";
 
 const { Header, Content, Footer } = Layout;
@@ -32,35 +33,7 @@ const App: FC<AppProps> = (props) => {
 			>
 				<AppBar />
 			</Header>
-			<div
-				style={{
-					backgroundColor: "white",
-					position: "sticky",
-					top: 0,
-					paddingLeft: "1.5rem",
-					paddingRight: "1.5rem",
-					zIndex: 3,
-				}}
-			>
-				<Menu selectedKeys={["quickstart"]} mode="horizontal">
-					<Menu.Item key="quickstart">
-						<NavLink to="/">Quickstart</NavLink>
-					</Menu.Item>
-					{isServerInfo && (
-						<>
-							<Menu.Item key="tokens">
-								<NavLink to="/tokens">Tokens</NavLink>
-							</Menu.Item>
-							<Menu.Item key="nfts">
-								<NavLink to="/nfts">NFTs</NavLink>
-							</Menu.Item>
-							<Menu.Item key="portfolio">
-								<NavLink to="/portfolio">Portfolio</NavLink>
-							</Menu.Item>
-						</>
-					)}
-				</Menu>
-			</div>
+			<MenuBar isServerInfo={isServerInfo} />
 			<Content>
 				<div style={{ padding: "2rem" }}>
 					<Routes>
