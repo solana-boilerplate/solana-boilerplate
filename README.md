@@ -26,9 +26,9 @@ yarn install
 ```
 ✏ Rename `.env.example` to `.env` in the main folder and provide your `appId` and `serverUrl` from Moralis ([How to start Moralis Server](https://docs.moralis.io/moralis-server/getting-started/create-a-moralis-server)) 
 Example:
-```jsx
-REACT_APP_MORALIS_APPLICATION_ID = xxxxxxxxxxxx
-REACT_APP_MORALIS_SERVER_URL = https://xxxxxx.grandmoralis.com:2053/server
+```tsx
+REACT_APP_MORALIS_APPLICATION_ID=xxxxxxxxxxxx
+REACT_APP_MORALIS_SERVER_URL=https://xxxxxx.grandmoralis.com:2053/server
 ```
 🚴‍♂️ Run your App:
 ```sh
@@ -44,8 +44,8 @@ yarn start
 - [🧰 Solana Hooks](#-solana-hooks)
   - [`useSolana`](#usesolana)
   - [`useSolanaNativeBalance`](#usesolananativebalance)
-  - [`useSPLTokenBalance`](#usesolanatokenbalance)
-  - [`useSPLNFTBalance`](#usesolananftbalance)
+  - [`useSPLTokenBalance`](#usespltokenbalance)
+  - [`useSPLNFTBalance`](#usesplnftbalance)
   - [`useSolanaPortfolio`](#usesolanaportfolio)
 
 # 🏗 Solana Components
@@ -54,10 +54,62 @@ yarn start
 
 ### `useSolana`
 
+Gets basic Solana information such as user's address.
+
+**Example**
+
+```tsx
+const { account } = useSolana();
+```
+
 ### `useSolanaNativeTokenBalance`
+
+Gets Solana SOL token balance of an address.
+
+**Example**
+
+```tsx
+const { getSolanaNativeBalance, data, error, isLoading } = useSolanaNativeTokenBalance({
+  network: "mainnet",
+  address: "xxx"
+});
+```
 
 ### `useSPLTokenBalance`
 
+Gets Solana SPL token balance of an address.
+
+**Example**
+
+```tsx
+const { getSPLTokenBalance, data, error, isLoading } = useSPLTokenBalance({
+  network: "mainnet",
+  address: "xxx"
+});
+```
+
 ### `useSPLNFTBalance`
 
+Gets Solana NFT balance of an address.
+
+**Example**
+
+```tsx
+const { getSPLNFTBalance, data, error, isLoading } = useSPLNFTBalance({
+  network: "mainnet",
+  address: "xxx"
+});
+```
+
 ### `useSolanaPortfolio`
+
+Gets Solana portfolio (SOL, SPL token, SPL NFT) of an address.
+
+**Example**
+
+```tsx
+const { getSolanaPortfolio, data, error, isLoading } = useSolanaPortfolio({
+  network: "mainnet",
+  address: "xxx"
+});
+```
