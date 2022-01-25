@@ -6,6 +6,10 @@ import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 
+const MoralisAppId = process.env.REACT_APP_MORALIS_APP_ID;
+const MoralisServerUrl = process.env.REACT_APP_MORALIS_SERVER_URL;
+const isServerInfo = !!(MoralisAppId && MoralisServerUrl);
+
 ReactDOM.render(
 	<StrictMode>
 		<BrowserRouter>
@@ -13,7 +17,7 @@ ReactDOM.render(
 				appId={process.env.REACT_APP_MORALIS_APP_ID ?? ""}
 				serverUrl={process.env.REACT_APP_MORALIS_SERVER_URL ?? ""}
 			>
-				<App />
+				<App isServerInfo={isServerInfo} />
 			</MoralisProvider>
 		</BrowserRouter>
 	</StrictMode>,

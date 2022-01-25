@@ -12,8 +12,13 @@ import "antd/dist/antd.css";
 const { Header, Content, Footer } = Layout;
 const { Text } = Typography;
 
-const App: FC = () => {
-	const { authenticate, isAuthenticated, user } = useMoralis();
+interface AppProps {
+	isServerInfo?: boolean;
+}
+
+const App: FC<AppProps> = (props) => {
+	const { isServerInfo = false } = props;
+	const { authenticate, logout, isAuthenticated, user } = useMoralis();
 
 	/**
 	 * @description
@@ -33,6 +38,18 @@ const App: FC = () => {
 		}
 	};
 
+	/**
+	 * @description Logging out and disconnecting Solana Wallet
+	 */
+	const onDisconnectWallet = async () => {
+		try {
+			await logout();
+		} catch (e) {
+			// eslint-disable-next-line no-console
+			console.error(e);
+		}
+	};
+
 	return (
 		<Layout style={{ minHeight: "100vh" }}>
 			<Header
@@ -40,8 +57,8 @@ const App: FC = () => {
 					display: "flex",
 					justifyContent: "space-between",
 					alignItems: "center",
-					paddingLeft: "1.5rem",
-					paddingRight: "1.5rem",
+					paddingLeft: "2rem",
+					paddingRight: "2rem",
 				}}
 			>
 				<div style={{ paddingTop: "1rem" }}>
@@ -49,7 +66,7 @@ const App: FC = () => {
 				</div>
 				<Button
 					id="test-button"
-					onClick={onConnectWallet}
+					onClick={isAuthenticated ? onDisconnectWallet : onConnectWallet}
 					text={
 						isAuthenticated && user?.get("solAddress")
 							? getEllipsisTxt(user?.get("solAddress"))
@@ -64,30 +81,40 @@ const App: FC = () => {
 					backgroundColor: "white",
 					position: "sticky",
 					top: 0,
+					paddingLeft: "1.5rem",
+					paddingRight: "1.5rem",
 				}}
 			>
 				<Menu selectedKeys={["quickstart"]} mode="horizontal">
 					<Menu.Item key="quickstart">
 						<NavLink to="/">Quickstart</NavLink>
 					</Menu.Item>
-					<Menu.Item key="tokens">
-						<NavLink to="/tokens">Tokens</NavLink>
-					</Menu.Item>
-					<Menu.Item key="nfts">
-						<NavLink to="/nfts">NFTs</NavLink>
-					</Menu.Item>
-					<Menu.Item key="portfolio">
-						<NavLink to="/portfolio">Portfolio</NavLink>
-					</Menu.Item>
+					{isServerInfo && (
+						<>
+							<Menu.Item key="tokens">
+								<NavLink to="/tokens">Tokens</NavLink>
+							</Menu.Item>
+							<Menu.Item key="nfts">
+								<NavLink to="/nfts">NFTs</NavLink>
+							</Menu.Item>
+							<Menu.Item key="portfolio">
+								<NavLink to="/portfolio">Portfolio</NavLink>
+							</Menu.Item>
+						</>
+					)}
 				</Menu>
 			</div>
 			<Content>
-				<div style={{ padding: "1rem" }}>
+				<div style={{ padding: "2rem" }}>
 					<Routes>
-						<Route path="/" element={<Quickstart />} />
-						<Route path="/tokens" element={<Tokens />} />
-						<Route path="/nfts" element={<NFTs />} />
-						<Route path="/portfolio" element={<Portfolio />} />
+						<Route path="/" element={<Quickstart isServerInfo={isServerInfo} />} />
+						{isServerInfo && (
+							<>
+								<Route path="/tokens" element={<Tokens />} />
+								<Route path="/nfts" element={<NFTs />} />
+								<Route path="/portfolio" element={<Portfolio />} />
+							</>
+						)}
 					</Routes>
 				</div>
 			</Content>

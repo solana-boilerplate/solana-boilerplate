@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 const NFTs: FC = () => {
-	return <>Quickstart</>;
+	return <>NFTs</>;
 };
 
 export default NFTs;
