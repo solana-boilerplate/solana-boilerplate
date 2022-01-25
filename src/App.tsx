@@ -7,6 +7,7 @@ import Quickstart from "./pages/Quickstart";
 import Tokens from "./pages/Tokens";
 import NFTs from "./pages/NFTs";
 import Portfolio from "./pages/Portfolio";
+// import useSolanaNativeBalance from "./hooks/useSolanaNativeBalance";
 import "antd/dist/antd.css";
 
 const { Header, Content, Footer } = Layout;
@@ -14,6 +15,9 @@ const { Text } = Typography;
 
 const App: FC = () => {
   const { authenticate, isAuthenticated, user } = useMoralis();
+  // const { data } = useSolanaNativeBalance();
+
+  // console.log(data);
 
   const onConnectWallet = async () => {
     try {
