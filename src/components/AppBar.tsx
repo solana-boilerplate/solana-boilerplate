@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { useMoralis } from "react-moralis";
 import { Typography } from "antd";
 import { Logo, Button, getEllipsisTxt, Modal, Blockie } from "web3uikit";
-import useSolana from "../../hooks/useSolana";
+import useSolana from "../hooks/useSolana";
 
 const { Text } = Typography;
 
